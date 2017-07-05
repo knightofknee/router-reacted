@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 const fakeAlbums = [
   {
@@ -82,15 +83,18 @@ export default class AllAlbums extends Component {
         {
           albums.map(album => (
             <div className="col-xs-4" key={ album.id }>
-              <a className="thumbnail" href="#" onClick={() => selectAlbum(album.id)}>
+              {/* <a  href="#" onClick={() => selectAlbum(album.id)}> */}
+                <Link to={`/albums/${album.id}`} className="thumbnail">Go to an Album
                 <img src={ album.imageUrl } />
                 <div className="caption">
                   <h5>
                     <span>{ album.name }</span>
                   </h5>
                   <small>{ album.songs.length } songs</small>
+
                 </div>
-              </a>
+                </Link>
+              {/* </a> */}
             </div>
           ))
         }

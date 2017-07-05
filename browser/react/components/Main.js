@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import AllAlbums from './AllAlbums';
 import SingleAlbum from './SingleAlbum';
 import Sidebar from './Sidebar';
@@ -7,13 +7,11 @@ import {HashRouter, Route} from 'react-router-dom'
 
 export default class Main extends Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props);
-    this.selectAlbum = this.selectAlbum.bind(this);
-    this.deselectAlbum = this.deselectAlbum.bind(this);
+    // this.selectAlbum = this.selectAlbum.bind(this);
+    // this.deselectAlbum = this.deselectAlbum.bind(this);
   }
-
-
 
   // selectAlbum (albumId) {
   //   axios.get(`/api/albums/${albumId}`)
@@ -22,32 +20,35 @@ export default class Main extends Component {
   //       selectedAlbum: album
   //     }));
   // }
-
+  //
   // deselectAlbum () {
   //   this.setState({ selectedAlbum: {}});
   // }
 
-  render () {
+  render() {
     return (
+      <HashRouter>
       <div id="main" className="container-fluid">
-        <div className="col-xs-2">
-          <Sidebar deselectAlbum={this.deselectAlbum} />
-        </div>
-          <HashRouter>
-            <div className="col-xs-10">
 
-              <Route exact path='/' component={AllAlbums}></Route>
-              <Route exact path='/albums' component={AllAlbums}></Route>
-              <Route path='/albums/:id' component={SingleAlbum}></Route>
-            </div>
-          </HashRouter>
-        {/*{
+          <div className="col-xs-2">
+            <Sidebar deselectAlbum={this.deselectAlbum}/>
+          </div>
+
+          <div className="col-xs-10">
+
+            <Route exact path='/' component={AllAlbums}></Route>
+            <Route exact path='/albums' component={AllAlbums}></Route>
+            <Route path='/albums/:id' component={SingleAlbum}></Route>
+          </div>
+
+          {/*{
           this.state.selectedAlbum.id ?
           <SingleAlbum album={this.state.selectedAlbum} /> :
           <AllAlbums albums={this.state.albums} selectAlbum={this.selectAlbum} />
         }*/}
-        <Player />
+          <Player/>
       </div>
+      </HashRouter>
     );
   }
 }
