@@ -1,11 +1,27 @@
 import React, { Component } from 'react';
 import Songs from '../components/Songs';
+import axios from 'axios'
 
 export default class SingleAlbum extends Component {
 
+  constructor() {
+    super()
+    this.state = {album: {}}
+  }
+
+    componentDidMount () {
+      axios.get(`/api/albums/${this.props.match.params.id}`)
+      .then(res => res.data)
+      .then(album => {
+        this.setState({ album })
+      });
+  }
+
   render () {
 
-    const album = this.props.album;
+    const album = this.state.album;
+
+    console.log('params',this.props.match.params)
 
     return (
       <div className="album">
