@@ -15,7 +15,7 @@ const Sidebar = (props) => {
       </section>
       <section>
         <h4 className="menu-item">
-          <Link to="FILL_ME_IN">ARTISTS</Link>
+          <Link to="/artists">ARTISTS</Link>
         </h4>
       </section>
 
