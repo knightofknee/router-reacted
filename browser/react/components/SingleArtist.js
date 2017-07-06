@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import AllAlbums from './AllAlbums'
 import Songs from './Songs'
+import {Link, Route} from 'react-router-dom'
 
 class SingleArtist extends Component {
 
@@ -32,14 +33,21 @@ class SingleArtist extends Component {
 
 
   render(){
-    console.log('KL is short for KOOL',this.state.artistSongs)
 
     const artist = this.state.artist
+    console.log('asdfasdf', artist)
 
     return (
       <div>
-        <h3>{artist.name}</h3>
-        <ul></ul>
+        <h3>{ this.state.artist.name }</h3>
+        <ul className="nav nav-tabs">
+          <li><Link to={`/artists/${this.props.match.params.id}/listAlbums`}>ALBUMS </Link></li>
+          <li><Link to={`/artists/${this.props.match.params.id}/listSongs`}>SONGS</Link></li>
+        </ul>
+
+        <Route path='/artists/:id/listAlbums' render={() => <AllAlbums albums={this.state.artistAlbums}/>}/>
+        <Route path='/artists/:id/listSongs' render={() => <Songs songs={this.state.artistSongs}/>}/>
+
 
       </div>
     )
@@ -49,7 +57,8 @@ class SingleArtist extends Component {
 export default SingleArtist
 
 
-  // <h4>ALBUMS</h4>
-  //         <AllAlbums albums={this.state.artistAlbums} />
-  //         <h4>SONGS</h4>
-  //         <Songs songs={this.state.artistSongs} />
+  // <Route exact path='/' component={StatefulAlbums}></Route>
+  //             <Route exact path='/albums' component={StatefulAlbums}></Route>
+  //             <Route path='/albums/:id' component={SingleAlbum}></Route>
+  //           <Route exact path='/artists' component={AllArtists}></Route>
+  //           <Route path='/artists/:id' component={SingleArtist}></Route>

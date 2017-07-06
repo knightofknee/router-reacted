@@ -3,6 +3,7 @@ import SingleAlbum from './SingleAlbum';
 import Sidebar from './Sidebar';
 import Player from './Player';
 import AllArtists from './AllArtists';
+import AllAlbums from './AllAlbums'
 import SingleArtist from './SingleArtist';
 import StatefulAlbums from './StatefulAlbums'
 import {HashRouter, Route} from 'react-router-dom';
@@ -28,12 +29,14 @@ export default class Main extends Component {
             <Route exact path='/' component={StatefulAlbums}></Route>
             <Route exact path='/albums' component={StatefulAlbums}></Route>
             <Route path='/albums/:id' component={SingleAlbum}></Route>
-          <Route exact path='/artists' component={AllArtists}></Route>
-          <Route path='/artists/:id' component={SingleArtist}></Route>
+            <Route exact path='/artists' component={AllArtists}></Route>
+            <Route path='/artists/:id' component={SingleArtist}></Route>
+
+          {/*<Route path='/artists/:id/listAlbums' render={()=> <AllAlbums albums={this.state.artistAlbums}/>}/>*/}
           </div>
 
 
-          <Player/>
+          <Player />
       </div>
       </HashRouter>
     );
