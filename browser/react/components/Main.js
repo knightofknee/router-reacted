@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import AllAlbums from './AllAlbums';
 import SingleAlbum from './SingleAlbum';
 import Sidebar from './Sidebar';
 import Player from './Player';
 import AllArtists from './AllArtists';
-import {HashRouter, Route} from 'react-router-dom'
+import SingleArtist from './SingleArtist';
+import StatefulAlbums from './StatefulAlbums'
+import {HashRouter, Route} from 'react-router-dom';
 
 export default class Main extends Component {
 
@@ -24,10 +25,11 @@ export default class Main extends Component {
 
           <div className="col-xs-10">
 
-            <Route exact path='/' component={AllAlbums}></Route>
-            <Route exact path='/albums' component={AllAlbums}></Route>
+            <Route exact path='/' component={StatefulAlbums}></Route>
+            <Route exact path='/albums' component={StatefulAlbums}></Route>
             <Route path='/albums/:id' component={SingleAlbum}></Route>
-          <Route path='/artists' component={AllArtists}></Route>
+          <Route exact path='/artists' component={AllArtists}></Route>
+          <Route path='/artists/:id' component={SingleArtist}></Route>
           </div>
 
 
